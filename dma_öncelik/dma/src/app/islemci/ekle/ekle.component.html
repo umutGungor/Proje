@@ -1,0 +1,10 @@
+
+<navbar></navbar>
+<div class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/islemci"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >İstekler</li>
+        <li id="1" routerLink="/islemci/ekle" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Ürünler ve Ayrıntıları</li>
+        <li id="2" routerLink="/islemci/hazirlanan" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Hazırlanan Ürünler</li>
+        <li id="3" routerLink="/islemci/gecmis" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Geçmişi</li> </ul>
+</div>
+<app-product></app-product>

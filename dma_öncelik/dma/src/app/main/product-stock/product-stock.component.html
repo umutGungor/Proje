@@ -1,0 +1,62 @@
+<app-main></app-main>
+<div class="font">
+    <div class="card-bg stock-cont text-center my-3 px-2 mx-4 text-white ">
+        <div  class="py-3 st-1 ps-3">
+        Bu Ay Yenilenen Ürün Sayısı
+        <br>
+        <h3 class="my-5 d-inline-block yen rounded-5 px-5 py-1">56536</h3>
+        </div>
+        <div  class="st-2">
+    <h3 class="position-relative  w-75 text-center text-white rounded-5 bg-danger my-3 d-inline-block px-5 py-2">Ürün Stokları</h3><br>   
+    <h5 class="d-inline-block">Ürün Ara</h5><br>
+    <input  type="text" class="in w-75 rounded-5"><br>
+    <button class="btn btn-primary my-3 me-4">Çoktan Aza</button>
+    <button class="btn btn-secondary my-3">Azdan Çoka</button> 
+    </div>
+    <div  class="py-3 st-3 pe-3">
+        Bu Ay Satılan Ürün Sayısı
+        <br>
+        <h3 class="my-5 d-inline-block sat rounded-5 px-5 py-1">53536</h3>
+    </div>
+    </div>
+    
+    <div class="card-bg  mb-4 px-2 max-overflow  mx-4 text-white ">
+    <div class="table-responsive">
+        <table  class="table table-borderless  text-center text-white ">
+            <thead>
+                <tr>
+                    <th scope="col">Ürün id</th>
+                    <th scope="col">Ürün ad</th>
+                    <th scope="col">Stokta</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody class="w-100">
+              <tr class="" *ngFor="let item of Products">
+                <td id="1üi" class="text w-25 text-break" scope="row">{{item.id}}</td>
+                <td class="text w-25 text-break">{{item.u_ad}}</td>
+                <td class="text w-25 text-break">{{item.stock}}</td>
+                <td class="text w-25 text-break">       
+                  <button  (click)="cikar(item)" (click)="accc()" type="button" class="minus btn btn me-2 h-100  btn-danger"><i class="bi bi-dash-lg"></i></button>
+                  <button  (click)="ekle(item)"  (click)="accc()" type="button" class="plus btn btn me-2 h-100  btn-primary"><i class="bi bi-plus"></i></button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    </div>
+</div>
+
+<div id="panel" class="d-none login p-3   border-0  mx-auto  rounded-5 ">
+  <i id="cross" (click)="kapt()" class="bi bi-x-lg cross"></i>
+  <div class="log py-5 p-25 rounded-5">
+    <h5 id="date"  class="act d-none  text-center text-white px-4 py-1 rounded-5 mb-3 c fs-5">Tarih</h5>
+      <div id="logs">
+  <h6  class="me-auto pt-3 ">Kaç Adet</h6> 
+  <input id="adet" class="border-0 rounded-5 in" type="text">    
+  <button id="confirm" (click)="tamamla()" class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" >
+    Tamamla!
+</button>
+  </div></div></div>
+

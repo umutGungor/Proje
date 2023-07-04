@@ -1,0 +1,250 @@
+<div id="carouselId" class="carousel car text-center text-white card-bg slide shadow py-2  mt-lg-3  mt-1 " data-bs-ride="carousel">
+
+  <span class="bg-success p-2 py-1 position-absolute msj-pos translate-middle rounded-5 text-white">2</span>
+  
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
+    </ol>
+
+    <div class="carousel-inner  h-100 w-100  position-relative " role="listbox">
+        <div class="carousel-item px-4 h-100 w-100 active">
+           
+          <h5 class="mt-4 mb-3">Osman Pilav Satış Artışı!</h5>
+          <p class="mt-4"><span class="text-success">Osman pilav</span> adlı ürün <span class="suc">%45</span> satış oranına sahip daha fazla yere ihraç edip daha fazla kâr elde edebilirsiniz.</p>
+
+            </div>
+      
+        <div class="carousel-item px-4 h-100 w-100">
+    <h5 class="mt-4 mb-3">Sizde Katılın!</h5>
+            <p class="mt-4">DMA hizmetinden yararlanmak bir tık uzağında!</p>
+        </div>
+      
+      </div>
+
+  
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+  <div class="left"><span class="carousel-control-prev-icon" aria-hidden="true"></span></div>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+  <div class="right"><span class="carousel-control-next-icon" aria-hidden="true"></span></div>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+
+<div class="bg mt-lg-3  mt-1 ">
+<div id="blocks" class=" text-white font">
+<div id="graph"  class="h-100 card-bg px-md-4 pb-sm-3 px-3  ">
+    <div class="py-2  pe-4 align-items-center mt-3 d-flex gap-2" id="group">
+    <div class="col-4  gap-2">
+    <div class="d-flex gap-2">
+    <button id="st" (click)="tip='bar'" (click)="this.btnClick($event)" class=" btn col-6 h-50 btn-primary">Sütun</button>
+    <button id="ln" (click)="tip='line'" (click)="this.btnClick($event)" class="btn col-6 h-50 text-white btn-secondary">Çizgi</button> 
+    </div>
+  
+<div class="d-flex gap-1">
+    <button id="LastYear" (click)="this.lastYear()" class="btn mt-3 col-4 text-white  btn-sm btn-success">Son Yıl</button> 
+    <button id="LastMonth" (click)="this.lastMonth()" class="btn mt-3 col-4 text-white btn-sm btn-info">Son Ay</button> 
+    <button id="LastWeek"  (click)="this.lastWeek()" class="btn mt-3 col-4 text-white aktif btn-sm btn-warning">Son Hafta</button> 
+</div>
+ 
+    </div>
+ 
+    <h4 class=" col-4 m-0 p-0 text-center  d-inline-block">En Çok Satan 10 Ürün</h4> 
+    <div class="col-4 text-center">
+       <select  (change)="val($event)"  class=" rounded-5 px-2 in" id="selectMod">
+        <option value="satan">En Çok Satan 10 Ürün</option>
+        <option  value="stok">Stok grafikleri En Az 10</option>
+        <option  value="kar">En Çok Kâr Edilen 10 Ürün</option>
+    </select>
+      <button  (click)="acc($event)" class="btn btn-success border-0 mt-3 w-50 text-white border-none  ">Özel Tarih</button> 
+    </div>
+</div>
+ <canvas class="py-2" id="chart"></canvas>
+ <div class="d-flex text-center">
+ 
+    <div class="col-6">
+        Kategori<br>
+      <select  (change)="filtre()" class="rounded-5 w-75 overflow-y-auto px-2 in"  id="selectCat">
+        <option value="*">Hepsi</option>
+        <option value="a">Gıda</option><!--ngfor-->
+     
+    </select>   
+    </div>
+    <div class="col-6">
+      Marka<br>
+      <select  (change)="filtre()" class=" rounded-5   overflow-y-auto w-75 px-2 in" id="selectMark">
+        <option value="*">Hepsi</option>
+        <option value="b">Hepsi</option><!--ngfor-->
+  
+    </select>   
+    
+    </div>
+   <div>
+
+   </div>
+</div>
+</div>    
+<div id="analysis"  class=" scroll   scroll-1  overflow-y-auto card-bg   ">
+<div class="text-center">
+<h4 class="p-2 ">Grafik Analizleri</h4>
+<button (click)="cokAz()" id="cokaz" class="aktif btn btn-sm me-2 f-but btn-primary">Çoktan aza</button>
+<button  (click)="azCok()" id="azcok"class="btn btn-sm f-but text-white btn-secondary">Azdan çoka</button>
+<h5 class="pt-4 pb-2">Kısaltma Açıklamaları</h5>
+<div *ngIf="this.deger=='satan'">
+<div *ngIf="this.zaman=='week'">
+  <span class="my-1">GHSO : Geçen haftaki satış oranı </span><br>
+  <span class="mt-1" >BHSO : Bu haftaki satış oranı </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+</div>
+<div *ngIf="this.zaman=='month'">
+  <span class="my-1">GASO : Geçen ayki satış oranı </span><br>
+  <span class="mt-1" >BASO : Bu ayki satış oranı </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+</div>
+<div *ngIf="this.zaman=='year'">
+  <span class="my-1">GYSO : Geçen yılki satış oranı </span><br>
+  <span class="mt-1" >BYSO : Bu yılki satış oranı </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+</div>
+</div>
+
+<div *ngIf="this.deger=='stok'">
+  <div *ngIf="this.zaman=='week'">
+    <span class="my-1">BHSS : Bu haftaki satılan stok</span><br>
+  </div>
+  <div *ngIf="this.zaman=='month'">
+    <span class="my-1">BASS : Bu ayki satılan stok</span><br>
+  </div>
+  <div *ngIf="this.zaman=='year'">
+    <span class="my-1">BYSS : Bu yılki satılan stok</span><br>
+  </div>
+  </div>
+
+  <div *ngIf="this.deger=='kar'">
+    <div *ngIf="this.zaman=='week'">
+      <span class="my-1">BHK : Bu haftaki kar </span><br>
+    </div>
+    <div *ngIf="this.zaman=='month'">
+      <span class="my-1">BAK : Bu ayki kar </span><br>
+    </div>
+    <div *ngIf="this.zaman=='year'">
+      <span class="my-1">BYK : Bu yılki kar </span><br>
+    </div>
+    </div>
+</div><br>
+<div class="text-center">
+  Ürün Ara<br>
+  <input type="text" (change)="ara($event)" class="w-50 in rounded-5 border border-0">
+</div>
+<table class="table table-borderless text-center my-4 text-white">
+  <thead *ngIf="this.deger=='satan'" class="text-center">
+     <tr *ngIf="this.zaman=='week'">
+          <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">GHSO</th>
+          <th class="text" scope="col">BHSO</th>
+     </tr>
+     <tr *ngIf="this.zaman=='month'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">GASO</th>
+      <th class="text" scope="col">BASO</th>
+  </tr>
+    
+  <tr *ngIf="this.zaman=='year'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">GYSO</th>
+        <th class="text" scope="col">BYSO</th>
+   </tr>
+    </thead>
+      <thead *ngIf="this.deger=='stok'" class="text-center">
+      <tr *ngIf="this.zaman=='week'">
+        <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">Stok</th>
+          <th class="text" scope="col">BHSS</th>
+     </tr>
+     <tr *ngIf="this.zaman=='month'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">Stok</th>
+      <th class="text" scope="col">BASS</th>
+  </tr>
+    
+  <tr *ngIf="this.zaman=='year'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">Stok</th>
+        <th class="text" scope="col">BYSS</th>
+   </tr>
+    </thead>
+    <thead *ngIf="this.deger=='kar'" class="text-center">
+      <tr *ngIf="this.zaman=='week'">
+        <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">Ort.Kar</th>
+          <th class="text" scope="col">BHK</th>
+     </tr>
+     <tr *ngIf="this.zaman=='month'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">Ort.Kar</th>
+      <th class="text" scope="col">BAK</th>
+  </tr>
+    
+  <tr *ngIf="this.zaman=='year'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">Ort.Kar</th>
+        <th class="text" scope="col">BYK</th>
+   </tr>
+    </thead>
+  
+ 
+<tbody class="w-100">
+ <tr><!--ngFor-->
+    <!--
+      
+   1.urun.urun_ID
+   2.  urun.urun_ad
+   ----en çok satanlar----  
+   3. geçen haftaki satış oranı 
+   ilk hafta dolmadan hiç bir veri gösterilemez ve ilk haftada total stoğun ne kadarı satıldıysa ona göre oran alınacak 
+   sonraki haftalarda karşılaştırma yapılacak.
+   4.bu haftaki satış oranı
+   Satış Oranı = Mevcut Hafta Satışı / Önceki Hafta Satışı -> ((Satış Oranı - 1) * 100)%
+  -----------------------  
+  -->
+  <td class="text col-3 text-break" scope="row">#3232</td>
+  <td class="text col-3 text-break">AliPapacum</td>
+  <td class="text col-3 text-break">34%</td>
+  <td class="text col-3 text-break">55%</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+
+  
+
+<div id="loginn" class="d-none login p-3 border-0 mx-auto rounded-5">
+  <i id="cross" (click)="kapatt($event)" class="bi bi-x-lg cross"></i>
+  <div class="log py-5 p-25 rounded-5">
+    <h5 id="date" class="act d-none text-center text-white px-4 py-1 rounded-5 mb-3 c fs-5">Tarih</h5>
+    <div id="logs">
+      <h6 class="me-auto">Başlangıç Tarihi</h6>
+      <input id="date-beg" class="border-0 rounded-5 in" type="date" [formControl]="startDateControl">
+
+      <h6 class="me-auto pt-3">Bitiş Tarihi</h6>
+      <input id="date-fin" class="border-0 rounded-5 in" type="date" [formControl]="endDateControl">
+      
+      <button class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" (click)="submitForm()">
+        Tamamla!
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+

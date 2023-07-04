@@ -1,0 +1,36 @@
+<navbar></navbar>
+<div class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/islemci"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item" >İstekler</li>
+        <li id="1" routerLink="/islemci/siparis" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Hazırlanan Siparişler</li>
+        <li id="2" routerLink="/islemci/urunler" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Ürünler</li>
+        <li id="3" routerLink="/islemci/gecmis" class="list-item"   [routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+    </ul>
+</div>
+<app-sell-calendar (DateEvent)="Date($event)" (selectedDateEvent)="handleSelectedDate($event)" [veri]="ustBilesenVeri" ></app-sell-calendar>
+<div class="font">
+    <div class="card-bg mb-4 px-md-2 px-0 mx-0  mx-md-4 text-white ">
+    <div class="table-responsive max-overflow">
+        <table class="table table-borderless text-center text-white">
+            <thead>
+                <tr>
+                    <th class="text" scope="col">Ürün id</th>
+                    <th class="text" scope="col">Ürün tarih</th>
+                
+                </tr>
+            </thead>
+            <tbody class="w-100">
+                <tr class="" *ngFor="let item of veriler">
+                    <td class="text  text-break" scope="row">{{item.ad}}</td>
+                    <td class="text  text-break">{{item.tarih}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    </div>
+   
+    </div>
+    
+
+

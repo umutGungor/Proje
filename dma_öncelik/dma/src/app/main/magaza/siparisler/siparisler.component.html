@@ -1,0 +1,53 @@
+
+<navbar></navbar>
+<div>
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/magaza"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Ürünler</li>
+        <li id="1" routerLink="/magaza/sepet" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Sepetim</li>
+        <li id="2" routerLink="/magaza/siparis" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Siparişlerim</li>
+        <li id="3" routerLink="/magaza/gecmis" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+    </ul>
+</div>
+<div class="font">
+    <div class="card-bg mb-4 px-2   mx-4 text-white ">
+    <div class="table-responsive max-overflow">
+        <table  class="table table-borderless   text-center text-white ">
+            <thead>
+                <tr>
+                    <th class="text" scope="col">Ürün id</th>
+                    <th class="text" scope="col">Ürün ad</th>
+                    <th class="text" scope="col">Kategori</th>
+                    <th class="text" scope="col">Marka</th>
+                    <th class="text" scope="col">Adet</th>
+                    <th class="text" scope="col">Firma</th>
+                    <th class="text" scope="col">Tutar</th>
+                    <th class="text" scope="col">Sipariş durum</th>
+                    <th class="text" scope="col">İşlem</th>
+                </tr>
+            </thead>
+           
+            <tbody class="w-100"><!--ngFor-->
+                <tr class="" *ngFor="let urun of siparisler">
+
+                    <td class="text col text-break"scope="row">{{urun.urun_ID}}</td>
+                    <td class="text col-2 text-break">{{urun.urun_ad}}</td>
+                    <td class="text col text-break">{{urun.kategori_AD}}</td>
+                    <td class="text col text-break">{{urun.marka_AD}}</td>
+                    <td class="text col text-break">{{urun.siparis_adeti}}</td>
+                    <td class="text col text-break">AH firması</td>
+                    <td class="text col text-break">{{(urun.urun_adet*urun.satis)}} TL</td>
+                    <td *ngIf="urun.durum=='sipatiş hazırlanıyor'" class="text col text-break yesil">{{urun.durum}}</td>
+                    <td *ngIf="urun.durum=='sipariş bekliyor'" class="text col text-break sari">{{urun.durum}}</td>
+                    <td class="text col">       
+                    <button *ngIf="urun.durum=='sipariş bekliyor'" id={{urun.id+urun.firma}} (click)="sil(urun)"  type="button" class="btn w-100 text-white  h-100  btn-danger">Kaldır</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    </div>
+   
+    </div>
+    
+    

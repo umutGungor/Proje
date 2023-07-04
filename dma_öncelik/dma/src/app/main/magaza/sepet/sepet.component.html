@@ -1,0 +1,77 @@
+<navbar></navbar>
+<div>
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/magaza"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Ürünler</li>
+        <li id="1" routerLink="/magaza/sepet" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Sepetim</li>
+        <li id="2" routerLink="/magaza/siparis" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Siparişlerim</li>
+        <li id="3" routerLink="/magaza/gecmis" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+    </ul>
+</div>
+
+
+<div class="font">
+    <div class="card-bg mb-4 px-2   mx-4 text-white ">
+    <div class="table-responsive max-overflow">
+        <table  class="table table-borderless   text-center text-white ">
+            <thead>
+                <tr>
+                    <th class="text" scope="col">Ürün id</th>
+                    <th class="text" scope="col">Ürün ad</th>
+                    <th class="text" scope="col">Kategori</th>
+                    <th class="text" scope="col">Marka</th>
+                    <th class="text" scope="col">stok</th>
+                    <th class="text" scope="col">siparis adeti</th>
+                    <th class="text" scope="col">Firma</th>
+                    <th class="text" scope="col">Fiyat</th>
+                    <th class="text" scope="col">İşlem</th>
+                </tr>
+            </thead>
+            <!-- 
+                aciklama
+    : 
+    "açıklama buraya yapılcak umut hocam dediş"
+    kategori_AD
+    "ev eşyası"
+    kategori_ID
+    maliyet
+    marka_AD
+    "arçelik"
+    marka_ID
+    satis
+    urun_ID
+    urun_ad
+    "pamuk"
+    urun_adet
+    19
+            -->
+            <tbody class="w-100"><!--ngFor-->
+                <tr class="" *ngFor="let urun of sepet">
+                    <td class="text col text-break"scope="row">{{urun.urun_ID}}</td>
+                    <td class="text col-2 text-break">{{urun.urun_ad}}</td>
+                    <td class="text col text-break">{{urun.kategori_AD}}</td>
+                    <td class="text col text-break">{{urun.marka_AD}}</td>
+                    <td class="text col text-break">{{urun.iss}}</td>
+                    <td class="text col text-break"><input min="1" max={{urun.iss}} (change)="kontrol($event,urun)" type="number" value={{urun.siparis_adeti}}></td>
+                    <td class="text col text-break">AH firması</td>
+                    <td class="text col text-break">{{urun.satis}}</td>
+                    <td class="text col">       
+                        <button *ngIf="urun.urun_adet < urun.siparis_adeti" [disabled]="true" (click)="satinal(urun)" id="{{urun.id + urun.firma + 1}}" type="button" class="btn btn-sm text-white h-100 succ">satın al</button>
+                        <button *ngIf="urun.urun_adet >= urun.siparis_adeti" [disabled]="false"  (click)="satinal(urun)" id="{{urun.id + urun.firma + 1}}" type="button" class="btn btn-sm text-white h-100 succ">satın al</button>
+
+                        <button id={{urun.id+urun.firma}} (click)="sil(urun)" type="button" class="btn btn-sm text-white  h-100  btn-danger">iptal et</button>
+                       
+                    </td>
+                </tr>
+                <button (click)="hepsiniAl()" type="button" class="btn btn-sm text-white h-100 btn-secondary">hepsini satın al</button>
+
+
+
+            </tbody>
+        </table>
+               
+    </div>
+    
+    </div>
+    
+    
+    </div>

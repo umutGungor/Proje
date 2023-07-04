@@ -1,0 +1,53 @@
+
+<navbar></navbar>
+<div>
+  
+   
+    <ul id="list" class="main-opt2 list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/depo"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item" >Depo</li>
+        <li id="1" routerLink="/depo/kayit" class="list-item "  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Kayıt</li>
+
+    </ul>
+
+<div class="font">
+    <div class="card-bg mb-4 px-2 px-md-2 mx-0 px-0 my-3  mx-md-4  mx-4 text-white ">
+    <div class="table-responsive max-overflow">
+        <table  class="table table-borderless   text-center text-white ">
+            <thead>
+                <tr>
+                    <th class="text" scope="col">Ürün id</th>
+                    <th class="text" scope="col">Ürün ad</th>
+                    <th class="text" scope="col">Kategori</th>
+                    <th class="text" scope="col">Marka</th>
+                    <th class="text" scope="col">Adet</th>
+                    <th class="text" scope="col">Firma</th>
+                    <th class="text" scope="col">Tutar</th>
+                    <th class="text" scope="col">Sipariş durum</th>
+                    <th class="text" scope="col">İşlem</th>
+                </tr>
+            </thead>
+           
+            <tbody class="w-100"><!--ngFor-->
+                <tr class="" *ngFor="let urun of veriler">
+
+                    <td class="text col text-break"scope="row">{{urun.urun_ID}}</td>
+                    <td class="text col-2 text-break">{{urun.urun_ad}}</td>
+                    <td class="text col text-break">{{urun.kategori_AD}}</td>
+                    <td class="text col text-break">{{urun.marka_AD}}</td>
+                    <td class="text col text-break">{{urun.siparis_adeti}}</td>
+                    <td class="text col text-break">Magaza 1</td>
+                    <td class="text col text-break">{{(urun.urun_adet*urun.satis)}} TL</td>
+                    <td class="text col text-break ">{{urun.durum}}</td>
+                    <td class="text col">       
+                    <button id={{urun.id+urun.firma}} (click)="sil(urun)"  type="button" class="btn btn-sm text-white w-100 h-50   btn-danger">siparis iptal</button>
+                     
+                        <button id={{urun.id+urun.firma}} (click)="bitir(urun)"  type="button" class="btn btn-sm text-white  w-100 h-50  succ">Tamamlandı</button>
+                        </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    </div>
+   
+    </div>

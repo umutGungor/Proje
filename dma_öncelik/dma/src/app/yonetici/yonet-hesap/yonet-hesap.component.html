@@ -1,0 +1,146 @@
+<navbar></navbar>
+<div class="w-100">
+  <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+      <li id="0"  routerLink="/main"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Grafik ve Analiz</li>
+      <li id="1" routerLink="/main/raport" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Raporlar</li>
+      <li id="2" routerLink="/main/recently" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+      <li id="3" routerLink="/main/hesap" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Hesap</li>
+ 
+    </ul>
+</div>
+<div id="pdfContent" class="px-md-3  px-1 d-flex  ">
+  <div class="row mx-0 mt-2 w-100">
+   <div class=" mb-2 px-2 hei-md col-lg-8 col-12">
+      <div class="border border-0 text-white position-relative card-bg mb-2 hei-md py-2    rounded-5 ">
+       
+
+       <h3 class="my-3 d-inline-block px-5">Hesaplar</h3>
+
+       <button class="btn yen my-3 btn-sm text-white mx-4 position-absolute  end-0" (click)="pan_ac()">Personel Ekle</button>
+             <div class="table-responsive max-overflow1">
+              <table class="table table-borderless text-center text-white">
+                  <thead>
+                      <tr>
+                          <th class="text" scope="col">Personel E-mail</th>
+                          <th class="text" scope="col">Personel Şifre</th>
+                          <th class="text" scope="col">Personel Rol</th>
+                          <th class="text" scope="col">Personel İsim</th>
+                          <th class="text" scope="col">İşlem</th>
+                      </tr>
+                  </thead>
+                  <tbody class="w-100">
+                   <tr class="" *ngFor="let personel of personels">
+                      <td class="text  text-break" scope="row">{{personel.email}}</td>
+                      <td class="text  text-break">{{personel.pass}}</td>
+                      <ng-container *ngFor="let rol of roller">
+                        <td class="text  text-break" *ngIf="rol.ls === personel.ls">{{rol.lisans_adlari}}</td>
+                      </ng-container>
+                      <td class="text  text-break">{{personel.firstLast}}</td>
+                      <td class="text max-width text-break">
+                        <button type="button" class="btn btn-sm text-white btn-width px-0 mx-0 btn-secondary" (click)="duzenle(personel)">Düzenle</button><br>
+                        <button type="button" *ngIf="personel.ls!=1" class="btn btn-width btn-sm px-0 mx-0  text-white btn-danger" (click)="sil(personel)">Sil</button>
+                        <button type="button" class="btn btn-sm text-white btn-width px-0 mx-0  btn-primary" (click)="hesap(personel)">Hesap Hareketleri</button>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+              </table>
+          </div>
+ </div>
+
+    
+      </div>
+      <div class=" mb-2 px-2 hei-md col-lg-4 col-12">
+        
+      <div class="border border-0 text-white position-relative card-bg py-2 hei-md text-center  d-flex flex-column align-items-center justify-content-center rounded-5 ">   
+        <button class="btn btn-sm text-white rounded-5 btn-success" (click)="hepsi()">Tüm Hesap Hareketleri</button>
+        <div class="h-50 d-flex flex-column align-items-center justify-content-center ">
+            <h3 class="text-center  py-2">Toplam Hesap Sayısı</h3>
+            <h5 class="px-5 py-2 text-white d-inline-block rounded-5 bg-secondary">{{personelsay}}</h5>
+
+          </div>
+          <div class="h-50 d-flex flex-column align-items-center justify-content-center">
+            <div class="table-responsive max-overflow1">
+              <table class="table table-borderless text-center text-white">
+                  <thead>
+                      <tr>
+                          <th class="text" scope="col">Personel İsim</th>
+                          <th class="text" scope="col">Personel Hesap aktifliği (günlük)</th>
+                          <th class="text" scope="col">Personel Hesap aktifliği (haftalık)</th>
+                    
+                      </tr>
+                  </thead>
+                  <tbody class="w-100">
+                   <tr class="" *ngFor="let giris of girislerCopy">
+                      <td *ngIf="giris.firstLast!='magaza1'" class="text  text-break" scope="row">{{giris.firstLast}}</td>
+                      <td *ngIf="giris.firstLast!='magaza1'" class="text  text-break">{{giris.dakika_1gun}} dk</td>
+                        <td *ngIf="giris.firstLast!='magaza1'" class="text  text-break">{{giris.dakika_7gun}} dk</td>
+                    </tr>
+
+                  </tbody>
+              </table>
+          </div>
+          </div>
+          </div>
+       </div>
+     
+       </div>
+       </div>
+
+         <form [formGroup]="personelForm" >
+            <div id="pro-add" class="d-none login p-3 my-auto border-0 mx-auto rounded-5">
+              <i id="cross" (click)="pan_kapat()" class="bi bi-x-lg cross"></i>
+              <div id="pro-form" class="log py-5 p-25 rounded-5">
+                <div id="pro-frm">
+                  <h6 class="me-auto">Personel E-mail</h6>
+                  <input id="pro-id" formControlName="personel_email" required maxlength="50" minlength="3" class="border-0 mb-2 rounded-5 in" type="text">
+                  <div *ngIf="personelForm.get('personel_email')!.invalid && (personelForm.get('personel_email')!.dirty || personelForm.get('personel_email')!.touched)">
+                    <div *ngIf="personelForm.get('personel_email')!.hasError('required')">E-mail alanı boş olamaz.</div>
+                    <div *ngIf="personelForm.get('personel_email')!.hasError('pattern')">Geçerli bir e-mail adresi giriniz.</div>
+                  </div>
+
+                <h6 class="me-auto">Personel Şifre</h6> 
+                <input id="pro-mal" formControlName="personel_sifre" minlength="1" required class="border-0 mb-2 rounded-5 in" type="text"> 
+                <div *ngIf="personelForm.get('personel_sifre')!.invalid && (personelForm.get('personel_sifre')!.dirty || personelForm.get('personel_sifre')!.touched)">
+                  <div *ngIf="personelForm.get('personel_sifre')!.hasError('required')">Şifre alanı boş olamaz.</div>
+                  <div *ngIf="personelForm.get('personel_sifre')!.hasError('minlength')">Şifre en az 6 karakter uzunluğunda olmalıdır.</div>   
+                
+                </div>
+                 <div id="pro-kat">
+                  <h6 class="me-auto">Rol</h6>
+                  <select  formControlName="personel_rol" required class="border-0 mb-2 rounded-5 in">
+                    <option value="" disabled selected hidden>Seçiniz</option>
+                    <ng-container *ngFor="let roller of roller; let i = index">
+                      <option *ngIf="roller.ls !== 1&&roller.ls !==4" [value]="roller.ls">
+                        {{ roller.lisans_adlari }}
+                      </option>
+                    </ng-container>
+                  </select>
+                  <div *ngIf="personelForm.get('personel_rol')!.invalid && (personelForm.get('personel_rol')!.dirty || personelForm.get('personel_rol')!.touched)">
+                    <div *ngIf="personelForm.get('personel_rol')!.hasError('required')">Rol seçimi zorunludur.</div>
+                  </div>
+                </div>
+                  
+                
+                    <h6 class="me-auto">Personel İsim</h6> 
+                    <input id="pro-mal" formControlName="personel_isim" minlength="1" required class="border-0 mb-2 rounded-5 in" type="text"> 
+                    <div *ngIf="personelForm.get('personel_isim')!.invalid && (personelForm.get('personel_isim')!.dirty || personelForm.get('personel_isim')!.touched)">
+                      <div *ngIf="personelForm.get('personel_isim')!.hasError('required')">İsim alanı boş olamaz.</div>
+                      <div *ngIf="personelForm.get('personel_isim')!.hasError('pattern')">Sadece harfler girilebilir.</div>   
+                    </div>
+                    
+                      
+                    <h6 class="me-auto pt-3"></h6>     
+                    <button  *ngIf="this.drm==0" (click)="insertyenipersonel()"  class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" [disabled]="personelForm.invalid">
+                      Personel Ekle!
+                    </button>
+                    <button  *ngIf="this.drm==1"  (click)="uptadeTamamla()" class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" [disabled]="personelForm.invalid">
+                      Personel Güncelle!
+                    </button>
+                  </div>
+                </div>
+                  </div>
+                
+                </form>
+          
+                <div id="blocker" class="blocker d-none"></div>

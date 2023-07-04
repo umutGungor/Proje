@@ -1,0 +1,65 @@
+<navbar></navbar>
+<app-main></app-main>
+<div id="content"  class="font">
+   
+    <div class="mb-4  px-sm-2 my-1 pb-2 px-1  mx-lg-4 mx-md-2 mx-0 text-white ">
+        <div class="d-flex gap-1 px-md-4 mb-2  px-1">
+            <button id="LastYear" (click)="this.lastYear()" class="btn mt-3 col-4 text-white rounded-5 btn-sm btn-success">Son Yıl</button> 
+            <button id="LastMonth" (click)="this.lastMonth()" class="btn mt-3 col-4 text-white rounded-5 btn-sm btn-info">Son Ay</button> 
+            <button id="LastWeek"  (click)="this.lastWeek()" class="btn mt-3 col-4 text-white rounded-5 aktif btn-sm btn-warning">Son Hafta</button> 
+        </div>
+        <div id="pdfContent" class="px-md-3  px-1 d-flex  ">
+           <div class="row mx-0  w-100">
+            <div class=" mb-2 px-2 hei-xl col-md-6 col-12">
+               <div class="border border-0 position-relative card-bg mb-2 hei py-2 d-flex overflow-auto flex-column align-items-center justify-content-center rounded-5 ">
+                  <h3 class="text-center position-static py-4 top-0">Stok Bilgileri</h3>
+                <ul class="list-unstyled ps-3 w-100 text-center"><!-- geçmiş view , alınanlar  -->
+                    <li class="list-group-item mb-2">Toplam {{totalsat}} stok azaldı.</li>
+                    <li class="list-group-item mb-2">Toplam {{totalal}} stok yenilendi.</li>
+                    <li class="list-group-item mb-2">En çok {{enkat}} kategorisinin stoğu azaldı.</li>
+                    <li class="list-group-item mb-2">En çok {{enmark}} markasının stoğu azaldı.</li>
+                    <li class="list-group-item mb-2">En çok {{satan}} ürününün stoğu azaldı.</li>
+
+                  </ul>
+            
+               </div>
+             
+               <div class="border border-0 position-relative card-bg py-2 hei text-center hei d-flex flex-column align-items-center justify-content-center rounded-5 ">   
+                <h3 class="text-center position-static top-0 py-4">Performans Bilgileri</h3>
+                <ul class="list-unstyled ps-3 w-100 text-center"><!--geçmiş view,siparişler-->
+                    <li class="list-group-item mb-2">Başarılı biten sipariş oranı {{((basarili/basarili+basarisiz)*100)}}%</li>
+                    <li class="list-group-item mb-2">İptal edilen sipariş oranı {{((basarisiz/basarili+basarisiz)*100)}}%</li>
+                    <li class="list-group-item mb-2">Ortalama sipariş tamamlama süresi<!--{{ürün.ad}}--> gün.</li>
+                    <li class="list-group-item mb-2">İşlemi biten sipariş sayısı {{totalsip}}.</li>
+
+                </ul>
+                </div>
+               </div>
+               <div class="  mb-2 px-2 hei-xl col-md-6 col-12">
+                <div class="border border-0 position-relative mb-2 card-bg py-2 d-flex hei-md overflow-auto flex-column align-items-center justify-content-center rounded-5 ">
+                    <h3 class="text-center position-static top-0 py-4">Satış Bilgileri</h3>
+                    <ul class="list-unstyled ps-3  w-100 text-center"><!--geçmiş view en az satan ?-->
+                    <li class="list-group-item mb-2">Başarılı satış sayısı {{basarili}}.</li>
+                    <li class="list-group-item mb-2">İptal edilen satış sayısı {{basarisiz}}.</li>
+                    <li class="list-group-item mb-2">En çok satan ürün {{satan}}.{{satankez}} kez satıldı.</li>
+                    <li class="list-group-item mb-2">En az satan ürün<!--{{ürün.ad}}-->.<!--{{geçmiş->ürün_ad->total sattığı ürün}}-->kez satıldı.</li>
+                    <li class="list-group-item mb-2">En çok satan kategori {{enkat}}. {{katkez}} kez satıldı.</li>
+                    <li class="list-group-item mb-2">En az satan kategori<!--{{ürün.kategori_AD}}-->.<!--{{geçmiş->ürün_ad->total sattığı ürün}}-->kez satıldı.</li>
+                    <li class="list-group-item mb-2">En çok satan marka {{enmark}}. {{markkez}} kez satıldı.</li>
+                    <li class="list-group-item mb-2">En az satan marka<!--{{ürün.kategori_AD}}-->.<!--{{geçmiş->ürün_ad->total sattığı ürün}}-->kez satıldı.</li>  
+
+            </ul>
+ </div>
+            <div class="border border-0 position-relative hei-small card-bg py-2 d-flex  overflow-auto flex-column align-items-center justify-content-center rounded-5 ">
+                <h3 class="text-center position-static top-0 py-4">Finans Bilgileri</h3>
+                <ul class="list-unstyled ps-3 w-100 text-center"><!--geçmiş view-->
+                <li class="list-group-item mb-2">Toplam kazanç {{topkaz}}.</li>
+                <li class="list-group-item mb-2">Toplam maliyet {{topmal}}.</li>
+                <li class="list-group-item mb-2">Kar oranı {{(((topkaz-topmal)/topkaz)*100)/100}}%.</li>
+            </ul>
+        </div>       
+          </div>
+          <button (click)="PDFDownload()" class="btn btn-secondary border-2 rounded-5  text-white px-4">PDF indir</button>      
+    </div> 
+</div>
+

@@ -1,0 +1,96 @@
+<navbar></navbar>
+<div>
+  
+   
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/magaza"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Ürünler</li>
+        <li id="1" routerLink="/magaza/sepet" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Sepetim</li>
+        <li id="2" routerLink="/magaza/siparis" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Siparişlerim</li>
+        <li id="3" routerLink="/magaza/gecmis" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+    </ul>
+</div>
+<div class="font">
+    <div class="card-bg stock-cont  text-center my-3 px-md-2 px-0 mx-0  mx-md-4 text-white ">
+        <div class="py-3 st-1 ps-3">
+        Toplam Ürün Çeşit Sayısı
+        <br>
+        <h3 class="my-5 d-inline-block yen rounded-5 px-5 py-1">{{veri1.length}}</h3>
+        </div>
+        <div class="st-2 ">
+    <h3 class="position-relative w-75 text-center text-white rounded-5 prod my-3 d-inline-block px-5 py-2">Ürünler</h3><br>   
+    <h5 class="d-inline-block">Ürün Ara</h5><br>
+    <input  type="text" (change)="ara($event)" class="in w-75 rounded-5"><br>
+  
+    <button (click)="alphabetA()" class="btn btn-primary my-3 me-4">A-Z</button>
+    <button (click)="alphabetZ()" class="btn btn-secondary my-3">Z-A</button> 
+    </div>
+    <div class="py-3 st-3  pe-3">
+       Toplam Kategori Sayısı
+        <br>
+        <h3 class="my-5 d-inline-block sat rounded-5 px-5 py-1">{{kategoriler.length}}</h3>
+    </div>
+    </div>
+    
+
+
+<div  class="card-bg mb-4 px-2    mx-4 text-white ">
+<div class="table-responsive max-overflow" >
+    <table  class="table table-borderless   text-center text-white ">
+        <thead>
+            <tr>
+                <th class="text" scope="col">Ürün id</th>
+                <th class="text" scope="col">Ürün ad</th>
+                <th class="text" scope="col">Kategori</th>
+                <th class="text" scope="col">Marka</th>
+                <th class="text" scope="col">Ayrıntılar</th>
+                <th class="text" scope="col">Stok</th>
+                <th class="text" scope="col">Firma</th>
+                <th class="text" scope="col">Fiyat</th>
+                <th class="text" scope="col">İşlem</th>
+            </tr>
+        </thead>
+
+        <tbody class="w-100"><!--ngFor-->
+            <tr class="" *ngFor="let urun of veri1copy">
+                <td  *ngIf="urun.kategori_ID>=1" class="text col text-break"scope="row">{{urun.urun_ID}}</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col-2 text-break">{{urun.urun_ad}}</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.kategori_AD}}</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.marka_AD}}</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col">   
+                    <button id="edit-pro" type="button"(click)="this.drm=1" (click)="accc(urun)" class="btn btn-sm h-100 text-white edit">Ayrıntılar</button>
+                </td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.iss}}</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col text-break">AH firması</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.satis}}</td>
+                <td  *ngIf="urun.kategori_ID>=1" class="text col">       
+                <button *ngIf="urun.iss>0" id={{urun.id+urun.firma}} (click)="satinal(urun,$event)"  type="button" class="btn btn-sm text-white w-100 h-100  btn-secondary">Sepete Ekle</button>
+                <button *ngIf="urun.iss<=0" id={{urun.id+urun.firma}} (click)="satinal(urun,$event)" disabled="true"  type="button" class="btn w-100 btn-sm text-white  h-100  btn-danger">Stokta yok</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</div>
+
+<div id="panel" class="d-none login p-3   border-0  mx-auto  rounded-5 ">
+    <i id="cross" (click)="kapt()" class="bi bi-x-lg cross"></i>
+    <div class="log p-25 p-3 rounded-5">
+        <div id="logs">
+            <div>
+
+<div id="aciklama" class="d-none"></div>  
+   <div id="satal" class="d-none">
+    <h6  class="me-auto pt-3 ">Kaç Adet</h6> 
+  <input id="adet" class="border-0 rounded-5 in" type="text">    
+  <button id="confirm" (click)="tamamla()" class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" >
+    Tamamla!
+</button>
+   </div>
+              
+
+</div>
+    </div></div></div>
+
+</div>

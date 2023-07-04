@@ -1,0 +1,51 @@
+
+
+//
+<head>
+    <script type="modal" src="../../../assets/js/date.js"></script>
+</head>
+
+<div class="py-4 font px-0 call-design">
+<div id="callendar" class="card-bg call-area w-100  d-inline-block position-relative text-center text-white  ">
+    <h3 class="py-4">Şipariş Takvimi</h3>
+
+<div class="w-100 d-flex align-items-center justify-content-center mt-3 mb-5">    
+      <div *ngIf="this.bugun.getMonth()!=this.startDate.getMonth()" class="d-inline-block m-0 p-0" id="geri" (click)="this.prev()"><i  class="d-inline-block carousel-control-prev-icon "></i></div>
+    <h3 class="d-inline-block w-50  my-0">{{ay}}</h3>
+ <div class="d-inline-block m-0 p-0" id="ileri" (click)="this.next()"><i  class="d-inline-block carousel-control-next-icon " ></i></div>
+  </div>  
+<table  class="table cal table-bordered text-center text-white ">
+    <thead>
+        <tr>
+            <th scope="col text">Pzt</th>
+            <th scope="col text">Salı</th>
+            <th scope="col text">Çar</th>
+            <th scope="col text">Per</th>
+            <th scope="col text">Cum</th>
+            <th scope="col text">Cmt</th>
+            <th scope="col text">Pzr</th>
+        </tr>
+    </thead>
+    <tbody id="tbod" class="">
+        <tr *ngFor="let hafta of calendar">
+            <ng-container *ngFor="let sut of hafta">
+              <td class="text">
+                <div (click)="selectDate(sut,startDate.getMonth(),startDate.getFullYear())" *ngIf="sut !== null; else empty"[ngClass]="{'cal-item ': true
+                , 'smaller-day': sut < bugun.getDate() && bugun.getMonth() === startDate.getMonth() && bugun.getFullYear() === startDate.getFullYear()
+                , 'small-sip-day': isSmallSipDay(sut)
+                , 'sip-day': isSipDay(sut)}">{{ sut }}</div>
+                <ng-template #empty></ng-template>
+              </td>
+            </ng-container>
+          </tr>
+    </tbody>
+ 
+       <button (click)="tumSip()" class="position-absolute  bottom-0 end-0 btn px-4 btn-secondary text-white rounded-5">Tüm Siparişler</button>
+
+    </table>
+
+    </div>
+
+    
+    
+</div>

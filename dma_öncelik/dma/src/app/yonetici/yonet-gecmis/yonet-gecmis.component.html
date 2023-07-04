@@ -1,0 +1,11 @@
+<navbar></navbar>
+<div class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/main"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Grafik ve Analiz</li>
+        <li id="1" routerLink="/main/raport" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Raporlar</li>
+        <li id="2" routerLink="/main/recently" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+        <li id="3" routerLink="/main/hesap" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Hesap</li>
+   
+      </ul>
+</div>
+<app-gecmis></app-gecmis>

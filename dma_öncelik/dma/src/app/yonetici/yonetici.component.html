@@ -1,0 +1,349 @@
+
+<navbar></navbar>
+<div class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/main"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Grafik ve Analiz</li>
+        <li id="1" routerLink="/main/raport" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Raporlar</li>
+        <li id="2" routerLink="/main/recently" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Sipariş Geçmişi</li>
+        <li id="3" routerLink="/main/hesap" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Hesap</li>
+   
+      </ul>
+</div>
+
+
+<div id="carouselId" class="carousel car text-center text-white card-bg slide shadow py-2  mt-lg-3  mt-1 " data-bs-ride="carousel">
+
+
+  
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="3"  aria-label="Fourth slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="4" aria-label="Fiveth slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="5" aria-label="Sixth slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="6"  aria-label="Seventh slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="7" aria-label="Eight slide"></li>
+        <li data-bs-target="#carouselId" data-bs-slide-to="8" aria-label="Nineth slide"></li>
+    </ol>
+
+    <div class="carousel-inner  h-100 w-100  position-relative " role="listbox">
+        <div class="carousel-item px-4 h-100 w-100 active"> 
+          <h5 class="mt-4 mb-3"><span class="text-secondary">{{tavsiyelerCopy[1]}}</span> Satış Artışı!</h5>
+          <p class="mt-4"><span class="text-secondary">{{tavsiyelerCopy[1]}}</span> adlı ürün <span class="guzel1">en çok</span> satış yapan ürün daha fazla yere ihraç edip daha fazla kâr elde edebilirsiniz!</p>
+        </div>
+      
+        <div class="carousel-item px-4 h-100 w-100">
+    <h5 class="mt-4 mb-3"><span class="text-secondary">{{tavsiyelerCopy[3] }}</span> kategorisi en çok ilgi gören kategoriniz!</h5>
+            <p class="mt-4"><span class="text-secondary">{{tavsiyelerCopy[3] }}</span> kategorisi en çok satın alınan kategoriniz bu kategoriye daha fazla ürün ekleyebilirsiniz!</p>
+        </div>
+
+        <div class="carousel-item px-4 h-100 w-100">
+          <h5 class="mt-4 mb-3"><span class="text-success">{{tavsiyelerCopy[5] }}</span> markası en çok ilgi gören marka!</h5>
+                  <p class="mt-4"><span class="text-success">{{tavsiyelerCopy[5] }}</span> markası en çok satın alınan kategoriniz bu markadan daha fazla ürün talep edebilirsiniz!</p>
+              </div>
+
+              <div class="carousel-item px-4 h-100 w-100">
+                <h5 class="mt-4 mb-3"><span class="guzel2">{{tavsiyelerCopy[7] }}</span> markası en çok ilgi gören marka!</h5>
+                        <p class="mt-4"><span class="guzel2">{{tavsiyelerCopy[7] }}</span> markası en çok satın alınan kategoriniz bu markadan daha fazla ürün talep edebilirsiniz!</p>
+                    </div>
+
+              <div class="carousel-item px-4 h-100 w-100">
+                <h5 class="mt-4 mb-3">İki haftadır satmayan ürün veya ürünleriniz <span class="guzel1">{{ikihafta[0] =="" ? "yok" : ikihafta[0] }}!</span></h5>
+                        <p class="mt-4"><span class="guzel1">{{ikihafta[0] =="" ? "satılmayan ürün yok mükemmmel" : "satılmayan ürün veya ürünler "+ikihafta[0] }}!</span></p>
+                    </div>
+
+                    <div class="carousel-item px-4 h-100 w-100">
+                      <h5 class="mt-4 mb-3"><span class="text-danger">En az satan</span> ürününüz!</h5>
+                              <p class="mt-4">En az satan ürününüz <span class="text-danger">{{tavsiyelerCopy[2] }}</span>!</p>
+                          </div>
+
+                          <div class="carousel-item px-4 h-100 w-100">
+                            <h5 class="mt-4 mb-3"><span class="text-success">En az satan</span> kategoriniz!</h5>
+                                    <p class="mt-4">En az satan kategoriniz <span class="text-success">{{tavsiyelerCopy[4] }}</span>!</p>
+                                </div>
+                              
+                                <div class="carousel-item px-4 h-100 w-100">
+                                  <h5 class="mt-4 mb-3"><span class="guzel1">En az satan</span> markanız!</h5>
+                                          <p class="mt-4">En az satan markanız <span class="guzel1">{{tavsiyelerCopy[6] }}</span>!</p>
+                                      </div>
+                                     
+                                      <div class="carousel-item px-4 h-100 w-100">
+                                        <h5 class="mt-4 mb-3"><span class="text-danger">En az satış oranına</span> sahip ürününüz!</h5>
+                                                <p class="mt-4">En az satış oranına sahip ürününüz <span class="text-danger">{{tavsiyelerCopy[8] }}</span>!</p>
+                                            </div>
+      
+      </div>
+
+  
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+  <div class="left"><span class="carousel-control-prev-icon" aria-hidden="true"></span></div>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+  <div class="right"><span class="carousel-control-next-icon" aria-hidden="true"></span></div>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+
+<div class="bg mt-lg-3  mt-1 ">
+<div id="blocks" class=" text-white font">
+<div id="graph"  class="h-100 card-bg px-md-4 pb-sm-3 px-3  ">
+    <div class="py-2  pe-4 align-items-center mt-3 d-flex gap-2" id="group">
+    <div class="col-4  gap-2">
+    <div class="d-flex gap-2">
+    <button id="st" (click)="tip='bar'" (click)="this.btnClick($event)" class=" btn col-6 h-50 btn-primary">Sütun</button>
+    <button id="ln" (click)="tip='line'" (click)="this.btnClick($event)" class="btn col-6 h-50 text-white btn-secondary">Çizgi</button> 
+    </div>
+  
+<div class="d-flex gap-1">
+    <button id="LastYear" (click)="this.lastYear($event)" class="btn mt-2 col-3 text-white  btn-sm btn-success">Son Yıl</button> 
+    <button id="LastMonth" (click)="this.lastMonth($event)" class="btn mt-2 col-3 text-white btn-sm btn-info">Son Ay</button> 
+    <button id="LastWeek"  (click)="this.lastWeek($event)" class="btn mt-2 col-3 text-white btn-sm btn-warning">Son Hafta</button> 
+    <button id="today"  (click)="this.todayy($event)" class="btn mt-2 col-3 text-white aktif btn-sm btn-primary">Bugün</button> 
+</div>
+ 
+    </div>
+ 
+    <h4 id="baslik" class="col-4 m-0 p-0 text-center  d-inline-block">En Çok Satan ilk 10 Ürün</h4> 
+    <div class="col-4 text-center">
+       <select  (change)="val($event)"  class=" rounded-5 px-2 in" id="selectMod">
+        <option value="satan">En Çok Satan ilk 10 Ürün</option>
+        <option  value="sepet">En Çok Sepette Bulunan Ürünler ilk 10</option>
+        <option  value="kar">En Çok Kâr Edilen ilk 10 Ürün</option>
+    </select>
+      <button id="ozel"  (click)="acc($event)" class="btn btn-success border-0 mt-3 w-50 text-white border-none  ">Özel Tarih</button> 
+    </div>
+</div>
+ <canvas class="py-2" id="chart"></canvas>
+ <div class="d-flex text-center">
+ 
+    <div class="col-6">
+        Kategori<br>
+      <select  (change)="filtre()" class="rounded-5 w-75 overflow-y-auto px-2 in"  id="selectCat">
+        <option value="0">Hepsi</option>
+        <ng-container *ngFor="let kat of kategoriler">
+          <option *ngIf="kat.kategori_ID>=1" [value]="kat.kategori_ID">{{kat.kategori_AD}}</option>
+        </ng-container>
+
+        <!--ngfor-->
+     
+    </select>   
+    </div>
+    <div class="col-6">
+      Marka<br>
+      <select  (change)="filtre()" class=" rounded-5   overflow-y-auto w-75 px-2 in" id="selectMark">
+        <option value="0">Hepsi</option>
+        <option *ngFor="let mak of markalar" value={{mak.marka_ID}}>{{mak.marka_AD}}</option>
+        <!--ngfor-->
+  
+    </select>   
+    
+    </div>
+   <div>
+
+   </div>
+</div>
+</div>    
+<div id="analysis"  class=" scroll   scroll-1  overflow-y-auto card-bg   ">
+<div class="text-center">
+<h4 class="p-2 ">Grafik Analizleri</h4>
+<button (click)="cokAz()" id="cokaz" class="aktif btn btn-sm me-2 f-but btn-primary">Çoktan aza</button>
+<button  (click)="azCok()" id="azcok"class="btn btn-sm f-but text-white btn-secondary">Azdan çoka</button>
+<h5 class="pt-4 pb-2">Kısaltma Açıklamaları</h5>
+<div *ngIf="this.deger=='satan'">
+  <div *ngIf="this.zaman=='today'">
+
+    <span class="mt-1" >BGSA : Bu günki satış adeti </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+  </div>
+  <div *ngIf="this.zaman=='ozel'">
+
+    <span class="mt-1" >ÖTSA : Özel tarih satış adeti </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+  </div>
+<div *ngIf="this.zaman=='week'">
+
+  <span class="mt-1" >BHSA : Bu haftaki satış adeti </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+</div>
+<div *ngIf="this.zaman=='month'">
+
+  <span class="mt-1" >BASA : Bu ayki satış adeti </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+</div>
+<div *ngIf="this.zaman=='year'">
+  <span class="mt-1" >BYSA : Bu yılki satış adeti </span><!--Satış Oranı = (Bu Haftaki Satış Tutarı / Geçen Haftaki Satış Tutarı) * 100-->
+</div>
+</div>
+
+<div *ngIf="this.deger=='sepet'">
+  <div *ngIf="this.zaman=='today'">
+    <span class="my-1">BGSÜ : bugünki sepetteki ürünler </span><br>
+  </div>
+  <div *ngIf="this.zaman=='ozel'">
+    <span class="my-1">ÖTSÜ : Özel Tarih sepetteki ürünler </span><br>
+  </div>
+  <div *ngIf="this.zaman=='week'">
+    <span class="my-1">BHSÜ : Bu haftaki sepetteki ürünler</span><br>
+  </div>
+  <div *ngIf="this.zaman=='month'">
+    <span class="my-1">BASÜ : Bu ayki sepetteki ürünler</span><br>
+  </div>
+  <div *ngIf="this.zaman=='year'">
+    <span class="my-1">BYSÜ : Bu yılki sepetteki ürünler</span><br>
+  </div>
+  </div>
+
+  <div *ngIf="this.deger=='kar'">
+    <div *ngIf="this.zaman=='today'">
+      <span class="my-1">BGK : Bugünki kar </span><br>
+    </div>
+    <div *ngIf="this.zaman=='ozel'">
+      <span class="my-1">ÖTK : Özel tarih kar </span><br>
+    </div>
+    <div *ngIf="this.zaman=='week'">
+      <span class="my-1">BHK : Bu haftaki kar </span><br>
+    </div>
+    <div *ngIf="this.zaman=='month'">
+      <span class="my-1">BAK : Bu ayki kar </span><br>
+    </div>
+    <div *ngIf="this.zaman=='year'">
+      <span class="my-1">BYK : Bu yılki kar </span><br>
+    </div>
+    </div>
+</div><br>
+<div class="text-center">
+  Ürün Ara<br>
+  <input type="text" (change)="ara($event)" class="w-50 in rounded-5 border border-0">
+</div>
+<table class="table table-borderless text-center my-4 text-white">
+  <thead *ngIf="this.deger=='satan'" class="text-center">
+    <tr *ngIf="this.zaman=='today'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">BGSA</th>
+ </tr>
+ <tr *ngIf="this.zaman=='ozel'">
+  <th class="text" scope="col">Ürün id</th>
+  <th class="text" scope="col">Ürün ad</th>
+  <th class="text" scope="col">ÖTSA</th>
+</tr>
+     <tr *ngIf="this.zaman=='week'">
+          <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">BHSO</th>
+     </tr>
+     <tr *ngIf="this.zaman=='month'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">BASA</th>
+  </tr>
+    
+  <tr *ngIf="this.zaman=='year'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">BYSA</th>
+   </tr>
+    </thead>
+      <thead *ngIf="this.deger=='sepet'" class="text-center">
+        <tr *ngIf="this.zaman=='today'">
+          <th class="text" scope="col">Ürün id</th>
+            <th class="text" scope="col">Ürün ad</th>
+            <th class="text" scope="col">BGSÜ</th>
+
+       </tr>
+       <tr *ngIf="this.zaman=='ozel'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">ÖTSÜ</th>
+      </tr>
+      <tr *ngIf="this.zaman=='week'">
+        <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">BHSÜ</th>
+     </tr>
+     <tr *ngIf="this.zaman=='month'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">BASÜ</th>
+  </tr>
+    
+  <tr *ngIf="this.zaman=='year'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">BYSÜ</th>
+   </tr>
+    </thead>
+    <thead *ngIf="this.deger=='kar'" class="text-center">
+      <tr *ngIf="this.zaman=='today'">
+        <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">Kar Ort.</th>
+          <th class="text" scope="col">BGK</th>
+     </tr>
+     <tr *ngIf="this.zaman=='ozel'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">Kar Ort.</th>
+      <th class="text" scope="col">ÖTK</th>
+    </tr>
+      <tr *ngIf="this.zaman=='week'">
+        <th class="text" scope="col">Ürün id</th>
+          <th class="text" scope="col">Ürün ad</th>
+          <th class="text" scope="col">Kar Ort.</th>
+          <th class="text" scope="col">BHK</th>
+     </tr>
+     <tr *ngIf="this.zaman=='month'">
+      <th class="text" scope="col">Ürün id</th>
+      <th class="text" scope="col">Ürün ad</th>
+      <th class="text" scope="col">Kar Ort.</th>
+      <th class="text" scope="col">BAK</th>
+  </tr>
+    
+  <tr *ngIf="this.zaman=='year'">
+        <th class="text" scope="col">Ürün id</th>
+        <th class="text" scope="col">Ürün ad</th>
+        <th class="text" scope="col">Kar Ort.</th>
+        <th class="text" scope="col">BYK</th>
+   </tr>
+    </thead>
+  
+    <!-- ilk hafta dolmadan hiç bir veri gösterilemez ve ilk haftada total stoğun ne kadarı satıldıysa ona göre oran alınacak 
+   sonraki haftalarda karşılaştırma yapılacak.--> 
+<tbody *ngIf="deger=='satan' || deger=='sepet'" class="w-100">
+ <tr *ngFor="let urun of analiztab1"><!--ngFor-->
+<td>#{{urun.id}}</td>
+<td>{{urun.ad}}</td>
+<td>{{urun.adet}}</td>
+</tr>
+</tbody>
+<tbody *ngIf="deger=='kar'" class="w-100">
+  <tr *ngFor="let urun of analiztab1"><!--ngFor-->
+ <td>#{{urun.id}}</td>
+ <td>{{urun.ad}}</td>
+ <td>{{(((urun.satis-urun.mal)/urun.satis)*100).toFixed(2)}}%</td>
+ <td>{{urun.kar}}TL</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+
+
+  
+
+<div id="loginn" class="d-none login p-3 border-0 mx-auto rounded-5">
+  <i id="cross" (click)="kapatt($event)" class="bi bi-x-lg cross"></i>
+  <div class="log py-5 p-25 rounded-5">
+    <h5 id="date" class="act d-none text-center text-white px-4 py-1 rounded-5 mb-3 c fs-5">Tarih</h5>
+    <div id="logs">
+      <h6 class="me-auto">Başlangıç Tarihi</h6>
+      <input id="date-beg" class="border-0 rounded-5 in" type="date" [formControl]="startDateControl">
+
+      <h6 class="me-auto pt-3">Bitiş Tarihi</h6>
+      <input id="date-fin" class="border-0 rounded-5 in" type="date" [formControl]="endDateControl">
+      
+      <button class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" (click)="submitForm()">
+        Tamamla!
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+

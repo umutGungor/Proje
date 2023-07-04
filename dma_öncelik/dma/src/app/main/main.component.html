@@ -1,0 +1,67 @@
+<div *ngIf="this.lisance=='1'&& (this.router.url==='/main'||this.router.url==='/main/stock'||this.router.url==='/main/products'||this.router.url==='/main/calendar')">
+    <navbar></navbar>
+</div>
+<div *ngIf="(this.lisance=='2'||this.lisance=='3'||this.lisance=='4'||this.lisance=='0') && (this.router.url==='/main'||this.router.url==='/main/stock'||this.router.url==='/main/products'||this.router.url==='/main/calendar')">
+    <shata></shata>
+</div>
+
+<ng-template [ngIf]="this.router.url==='/main'||this.router.url==='/main/stock'||this.router.url==='/main/products'||this.router.url==='/main/calendar'" [ngIfElse]="hata">
+<div *ngIf="this.lisance=='1'" class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/main"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Grafikler ve analizler</li>
+        <li id="2" routerLink="/main/products" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Ürünler ve ayrıntıları</li>
+        <li id="3" routerLink="/main/calendar" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Takvimi</li>
+    </ul>
+</div>
+</ng-template>
+
+<div *ngIf="this.lisance=='2'" class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/main"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >Grafikler ve analizler</li>
+        <li id="1" routerLink="/main/stock" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Ürün Stokları</li>
+        <li id="2" routerLink="/main/products" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Ürünler ve ayrıntıları</li>
+        <li id="3" routerLink="/main/calendar" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş Takvimi</li>
+    </ul>
+</div>
+
+
+<ng-template [ngIf]="this.router.url==='/depo'||this.router.url==='/depo/stock'" [ngIfElse]="hata">
+  
+<div *ngIf="this.lisance=='3'" class="w-100">
+    <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+        <li id="0"  routerLink="/depo"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >siparis</li>
+        <li id="1" routerLink="/depo/stock" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >Stokları</li>
+    </ul>
+</div>
+</ng-template>
+  
+
+
+
+
+
+
+
+
+
+<div *ngIf="this.lisance=='4'" class="w-100">
+    <div>
+            <ul id="list" class="main-opt list-unstyled my-0 w-100 text-white">
+                <li id="0"  routerLink="/magaza"  routerLinkActive="Sitem" [routerLinkActiveOptions]="{exact : true}" class="list-item " >ürünler</li>
+                <li id="1" routerLink="/magaza/sepet" class="list-item"  [routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >sepetim</li>
+                <li id="2" routerLink="/magaza/siparis" class="list-item"[routerLinkActiveOptions]="{exact : true}"   routerLinkActive="Sitem" >siparişlerim</li>
+                <li id="3" routerLink="/magaza/gecmis" class="list-item"[routerLinkActiveOptions]="{exact : true}" routerLinkActive="Sitem" >Sipariş geçmişi</li>
+            </ul>
+    </div>
+    </div>
+  
+  
+  <ng-template #hata>
+   {{asd()}}
+    <shata *ngIf="sayac==22"></shata>
+    </ng-template>
+  
+
+
+<app-ag   *ngIf="this.lisance=='1' && router.url === '/main'"></app-ag>
+

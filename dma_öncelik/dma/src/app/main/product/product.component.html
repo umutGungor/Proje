@@ -1,0 +1,184 @@
+
+
+<div class="font">
+  <div class="card-bg stock-cont  text-center my-3 px-md-2 px-0 mx-0  mx-md-4 text-white ">
+      <div class="py-3 st-1 ps-3">
+      Toplam Ürün Çeşit Sayısı
+      <br>
+      <h3 class="my-5 d-inline-block yen rounded-5 px-5 py-1">{{veri1.length}}</h3>
+      </div>
+      <div class="st-2 ">
+  <h3 class="position-relative w-75 text-center text-white rounded-5 prod my-3 d-inline-block px-5 py-2">Ürünler</h3><br>   
+  <h5 class="d-inline-block">Ürün Ara</h5><br>
+  <input  type="text" (change)="ara($event)" class="in w-75 rounded-5"><br>
+
+  <button (click)="alphabetA()" class="btn btn-primary my-3 me-4">A-Z</button>
+  <button class="btn yen my-3 text-white me-4" (click)="pro_ac()">Ürün Ekle</button>
+  <button class="btn succ my-3 text-white me-4" (click)="mark_ac()">Marka Ekle</button>
+  <button class="btn succ my-3 text-white me-4" (click)="kat_ac()">Kategori Ekle</button>
+  <button (click)="alphabetZ()" class="btn btn-secondary my-3">Z-A</button> 
+  </div>
+  <div class="py-3 st-3  pe-3">
+     Toplam Kategori Sayısı
+      <br>
+      <h3 class="my-5 d-inline-block sat rounded-5 px-5 py-1">{{kategoriler.length}}</h3>
+  </div>
+  </div>
+  
+  
+  <div class="font">
+    <div class="card-bg mb-4 px-md-2 px-0 mx-0  mx-md-4 text-white ">
+    <div class="table-responsive max-overflow">
+        <table class="table table-borderless text-center text-white">
+            <thead>
+                <tr>
+                  <th class="text" scope="col">Ürün id</th>
+                  <th class="text" scope="col">Ürün ad</th>
+                  <th class="text" scope="col">Kategori</th>
+                  <th class="text" scope="col">Marka</th>
+                  <th class="text" scope="col">Ayrıntılar</th>
+                  <th class="text" scope="col">Stok</th>
+                  <th class="text" scope="col">satılabilir stok</th>
+                  <th class="text" scope="col">Fiyat</th>
+                  <th class="text" scope="col">Maliyet</th>
+                </tr>
+            </thead>
+            <tbody class="w-100">
+                <tr class="" *ngFor="let urun of veri1copy">
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break"scope="row">{{urun.urun_ID}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col-2 text-break">{{urun.urun_ad}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.kategori_AD}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.marka_AD}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col">   
+                      <button  id="edit-pro" type="button"(click)="this.drm=1" (click)="acikla(urun.aciklama)" class="btn btn-sm h-100 text-white edit">Ayrıntılar</button>
+                  </td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.urun_adet}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.iss}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.satis}}</td>
+                  <td *ngIf="urun.kategori_ID>=1" class="text col text-break">{{urun.maliyet}}</td>
+               <td *ngIf="urun.kategori_ID>=1" class="text  text-break">
+                        <button type="button" (click)="updateUrun(urun)" class="btn btn-sm text-white w-100 btn-warning">Düzenle</button><br>
+                        <button type="button" (click)="deleteUrun(urun.urun_ID)" class="btn btn-sm text-white w-100 btn-danger">Sil</button>
+                      </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    </div>
+   
+    </div>
+  
+  <form [formGroup]="productForm" >
+    <div id="pro-add" class="d-none login p-3 my-auto border-0 mx-auto rounded-5">
+      <i id="cross" (click)="pro_kapat()" class="bi bi-x-lg cross"></i>
+      <div id="pro-form" class="log py-5 p-25 rounded-5">
+        <div id="pro-frm">
+          <h6 class="me-auto">Ürün Adı</h6>
+          <input id="pro-id" formControlName="productName" required maxlength="50" minlength="3" class="border-0 mb-2 rounded-5 in" type="text">
+          <div *ngIf="productForm.get('productName')!.invalid && (productForm.get('productName')!.dirty || productForm.get('productName')!.touched)">
+            <div *ngIf="productForm.get('productName')!.hasError('required')">Kategori alanı seçiniz.</div>
+            <div *ngIf="productForm.get('productName')!.hasError('minlength')">Minimum karakter sayısını geçin.</div>
+        </div>
+         
+          <h6 class="me-auto">Kategori</h6>
+          <select id="pro-kat" formControlName="category" required class="border-0 mb-2 rounded-5 in">
+            <ng-container *ngFor="let kat of kategoriler">
+              <option *ngIf="kat.kategori_ID>=1" [value]="kat.kategori_ID">{{kat.kategori_AD}}</option>
+            </ng-container>
+          </select>
+          
+        <div *ngIf="productForm.get('category')!.invalid && (productForm.get('category')!.dirty || productForm.get('category')!.touched)">
+            <div *ngIf="productForm.get('category')!.hasError('required')">Kategori alanı seçiniz.</div>
+        </div>
+        
+  
+            <h6 class="me-auto">Marka</h6> 
+            <select id="pro-mark" formControlName="brand" required class="border-0 mb-2 rounded-5 in">
+               
+                <option *ngFor="let mak of markalar" value={{mak.marka_ID}}>{{mak.marka_AD}}</option>
+             
+            </select> 
+            <div *ngIf="productForm.get('brand')!.invalid && (productForm.get('brand')!.dirty || productForm.get('brand')!.touched)">
+                <div *ngIf="productForm.get('brand')!.hasError('required')">Kategori alanı seçiniz.</div>
+            </div>
+  
+  
+            <h6 class="me-auto">Maliyet</h6> 
+            <input id="pro-mal" formControlName="cost" minlength="1" required class="border-0 mb-2 rounded-5 in" type="text"> 
+            <div *ngIf="productForm.get('cost')!.invalid && (productForm.get('cost')!.dirty || productForm.get('cost')!.touched)">
+             <div *ngIf="productForm.get('cost')!.hasError('required')">Bu alan boş bırakılamaz.</div>
+            <div *ngIf="productForm.get('cost')!.hasError('pattern')">Bu alana sadece sayı girilmelidir.</div>   
+            </div>
+            
+            <h6 class="me-auto">Satış</h6> 
+            <input id="pro-sat" formControlName="sale" minlength="1" required class="border-0 mb-2 rounded-5 in" type="text"> 
+            <div *ngIf="productForm.get('sale')!.invalid && (productForm.get('sale')!.dirty || productForm.get('sale')!.touched)">
+                <div *ngIf="productForm.get('sale')!.hasError('required')">Bu alan boş bırakılamaz.</div>
+               <div *ngIf="productForm.get('sale')!.hasError('pattern')">Bu alana sadece sayı girilmelidir.</div>   
+               </div>
+          
+                <h6 class="me-auto">Ürün Açıklamasi</h6>
+                <textarea id="pro-acikla" placeholder="sadece 100 karakter" formControlName="exp" required maxlength="100" minlength="3" class="border-0 mb-2 rounded-5 in" ></textarea>
+                <div *ngIf="productForm.get('exp')!.invalid && (productForm.get('exp')!.dirty || productForm.get('exp')!.touched)">
+                  <div *ngIf="productForm.get('exp')!.hasError('required')">Kategori alanı seçiniz.</div>
+                  <div *ngIf="productForm.get('exp')!.hasError('minlength')">Minimum karakter sayısını geçin.</div>
+              </div>
+              
+            <h6 class="me-auto pt-3"></h6>     
+            <button  *ngIf="this.drm==0" (click)="insertyeniurun()"  class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" [disabled]="productForm.invalid">
+              Ürünü Ekle!
+            </button>
+            <button  *ngIf="this.drm==1"  (click)="uptadeTamamla()" class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" [disabled]="productForm.invalid">
+              Ürünü Güncelle!
+            </button>
+          </div>
+        </div>
+          </div>
+        
+        </form>
+  
+  
+  
+        <form [formGroup]="categoryForm" (ngSubmit)="insertyenikategori()">
+          <div id="kat-add" class="d-none login p-3 my-auto border-0 mx-auto rounded-5">
+            <i id="cross" (click)="kat_kapat()" class="bi bi-x-lg cross"></i>
+            <div id="pro-form" class="log py-5 p-25 rounded-5">
+              <div id="pro-frm">
+                <h6 class="me-auto">Kategori Adı</h6>
+                <input id="pro-id" formControlName="katName" required maxlength="50" minlength="3" class="border-0 mb-2 rounded-5 in" type="text">
+                <div *ngIf="categoryForm.get('katName')!.invalid && (categoryForm.get('katName')!.dirty || categoryForm.get('katName')!.touched)">
+                  <div *ngIf="categoryForm.get('katName')!.hasError('required')">Boş geçilemez.</div>
+                  <div *ngIf="categoryForm.get('katName')!.hasError('minlength')">Minimum karakter sayısını geçin.</div>
+               </div>
+                  
+              <button class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" [disabled]="categoryForm.invalid">
+                Kategori Ekle!
+              </button>
+               </div></div></div></form>
+  
+  
+              <form [formGroup]="markForm" (ngSubmit)="insertyenimarka()">
+                <div id="mark-add" class="d-none login p-3 my-auto border-0 mx-auto rounded-5">
+                  <i id="cross" (click)="mark_kapat()" class="bi bi-x-lg cross"></i>
+                  <div id="pro-form" class="log py-5 p-25 rounded-5">
+                    <div id="pro-frm">
+                      <h6 class="me-auto">Marka Adı</h6>
+                      <input id="pro-id" formControlName="markName" required maxlength="50" minlength="3" class="border-0 mb-2 rounded-5 in" type="text">
+                      <div *ngIf="markForm.get('markName')!.invalid && (markForm.get('markName')!.dirty || markForm.get('markName')!.touched)">
+                        <div *ngIf="markForm.get('markName')!.hasError('required')">Kategori alanı seçiniz.</div>
+                        <div *ngIf="markForm.get('markName')!.hasError('minlength')">Minimum karakter sayısını geçin.</div>
+                    </div>
+                    <button class="btn mt-4 my-3 d-block rounded-5 border border-2 border-secondary fs-6 w-100 btn-outline-secondary" [disabled]="markForm.invalid">
+                     Marka Ekle!
+                    </button>
+                  </div></div></div></form>
+  
+  
+                  <div id="ac_ekran" class="d-none login p-3 my-auto border-0 mx-auto rounded-5">
+                    <i id="cross" (click)="aciklama_kapat()" class="bi bi-x-lg cross"></i>
+                    <div id="acıklama-form" class="log py-5 p-25 rounded-5">
+                    <div id="aciklama"></div>  
+                    </div></div></div>
+  
+      <div id="blocker" class="blocker d-none"></div>
