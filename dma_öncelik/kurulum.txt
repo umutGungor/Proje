@@ -1,0 +1,32 @@
+ SQL:
+paylaşılmış olan .mbf dosyalarını sql server manegment stodioya bağlanın daha sonra databases sağ tıklayıp attach butonuna basınız
+gelen ekrandaki add butonuna basıp baylaştığımız bu iki dosyayı ekleyiniz.
+sql server agent'ı çalışır hale getirin jobs kısmına sağ tıklayıp new jobs seçeneğini seçin general kısmında name kısmına her_gun_kontrol yazın
+steps kısmına geçip step name kısmıona zamanlayıcı yazıp aşağısındaki database olarah LoginDb databasini seçin commands kısmına bunu yapıştırın 
+------------------------------------------------
+UPDATE [LoginDB].[dbo].[Users]
+SET dakika_7gun = CASE WHEN DATEPART(WEEKDAY, GETDATE()) = 1 THEN 0 ELSE dakika_7gun END,
+    dakika_1gun = 0
+-------------------------------------------------
+schaludes kısmına gelip
+her gün çalışıcak şekilde ayarlayınız
+ 
+API:
+API yi açtıktan sonra appsettings.json soyasını açıp
+---------------------------
+ "MyDBConnection": "Data Source=ITOCH\\ITOCH;Initial Catalog=LoginDB;Integrated Security=True",
+    "MyDBConnection2": "Data Source=ITOCH\\ITOCH;Initial Catalog=AH_firmasi;Integrated Security=True"
+----------------------------
+bu iki alanın source kısımlarını kendi database adına göre revize edin 
+daha sonra programın apisini çalıştırın. 
+
+ ANGULAR:
+DMA adındaki projeyi visual studio code ile dosya olarak açın daha sonra terminal alanından ng serve --o yazdıkdan sonra otomatik olarak 
+ekrana program çalışır halde gelicektir.
+
+LOGİN:
+kullanıcı adları ve şifreleri.
+yönetici: aytac@gmail.com şifre: 123456  umut@gmail.com şifre: 123456
+işlemci: islemci1@gmail.com şifre: 123456 
+depo: depo1@gmail.com şifre: 123456
+magaza: magaza1@gmail.com sifre: 123456
